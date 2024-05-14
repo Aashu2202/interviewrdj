@@ -126,9 +126,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .assitent import call
 
 import openai
-from dotenv import load_dotenv
-load_dotenv()
-apikey = os.getenv('OPEN_AI_ROOT')
+
+apikey = ""
 
 openai.api_key = apikey
 

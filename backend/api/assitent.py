@@ -3,10 +3,7 @@ import random
 import speech_recognition as sr
 import openai
 import pyttsx3
-from dotenv import load_dotenv
-
-load_dotenv()
-apikey = os.getenv('OPEN_AI_ROOT')
+apikey = ""
 openai.api_key = apikey
 
 engine = pyttsx3.init()
