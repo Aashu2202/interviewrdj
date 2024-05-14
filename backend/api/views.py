@@ -122,25 +122,25 @@ class UploadVideoView(APIView):
         
 
 # interviews/views.py
-from django.views.decorators.csrf import csrf_exempt
-from .assitent import call
+# from django.views.decorators.csrf import csrf_exempt
+# from .assitent import call
 
-import openai
+# import openai
 
-apikey = ""
+# apikey = ""
 
-openai.api_key = apikey
+# openai.api_key = apikey
 
-class StartInterviewView(APIView):
-    @csrf_exempt
+# class StartInterviewView(APIView):
+#     @csrf_exempt
 
-    def post(self, request,format=None):
-        value = request.data["value"]
-        if value == True:
-            call()
-            return Response({"call": True}, status=200)
-        else:
-            return Response({"error": "Invalid request"}, status=400)
+#     def post(self, request,format=None):
+#         value = request.data["value"]
+#         if value == True:
+#             call()
+#             return Response({"call": True}, status=200)
+#         else:
+#             return Response({"error": "Invalid request"}, status=400)
         
         
 #Contact_us API
