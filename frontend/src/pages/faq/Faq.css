@@ -1,0 +1,52 @@
+.faq {
+    background-color: var(--bgcolor);
+    height: 100%;
+    max-height: max-content;
+}
+
+.bgcolor {
+    background-color: rgba(13, 110, 253, 0.25);
+    border-radius: 15px;
+}
+
+.faq-card {
+    background-color: white;
+    border-radius: 25px;
+}
+
+.accordion-button:hover {
+    background-color: #ccd2db;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+}
+
+button:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+.accordion-button {
+    color: none !important;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: none !important
+}
+
+.accordion-button *::after,
+*::before {
+    box-sizing: border-box !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+
+}
+
+.accordion .collapse {
+    visibility:visible;
+}

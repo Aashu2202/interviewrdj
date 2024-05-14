@@ -1,0 +1,36 @@
+.logo{
+    width: 200px;
+    height: 50px;
+}
+.avatar img{
+    height: 50px;
+}
+.user-menu ul{
+    padding: 0;
+}
+.sr-only{
+    display:none;
+}
+.menu-bar {
+    display: none;
+}
+.listing .nav-link {
+    display: block;
+}
+
+/* Define styles for desktop view */
+@media screen and (max-width: 576px) {
+    .logo{
+        width: 130px;
+        height: 40px;
+    }
+    .menu-bar {
+        display: block;
+    }
+    .listing2{
+        display: none !important;
+    }
+    .navbar-nav .nav-link {
+        margin: 0 15px
+    }
+}

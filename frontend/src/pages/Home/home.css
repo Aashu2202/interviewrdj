@@ -1,0 +1,18 @@
+.herosection {
+    background-color: var(--bgcolor);
+    height: 100vh;
+    max-height: max-content;
+
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #076EFF, #F25D54);
+    background-clip: text;
+    color: transparent;
+}
+
+.btn .icon {
+    color: var(--whitecolor);
+    margin-left: 2px;
+
+}
