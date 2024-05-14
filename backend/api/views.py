@@ -124,14 +124,13 @@ class UploadVideoView(APIView):
 # interviews/views.py
 from django.views.decorators.csrf import csrf_exempt
 from .assitent import call
-import win32com.client
-import openai # type: ignore
+
+import openai
 from dotenv import load_dotenv
 load_dotenv()
 apikey = os.getenv('OPEN_AI_ROOT')
 
 openai.api_key = apikey
-sp = win32com.client.Dispatch("SAPI.SpVoice")
 
 class StartInterviewView(APIView):
     @csrf_exempt
@@ -212,12 +211,6 @@ class SendVerificationEmail(View):
             )
             return JsonResponse({'message': 'Verification email sent.'})
         return JsonResponse({'error': 'Email not provided.'})
-
-
-
-
-
-
 
 class VerifyEmail(View):
     def get(self, request):
