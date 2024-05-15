@@ -124,7 +124,7 @@ const AppNavBar = (props) => {
                         <Dropdown
                             arrowIcon={false}
                             inline
-                            label={<button className="menu-bar whitecolor">☰</button>}
+                            label={<button className=" menu-bar whitecolor "><i class='bx bx-menu hamburger'></i></button>}
                             className="nav-dropdown menu-bar"
                         >
                             <Dropdown.Item>

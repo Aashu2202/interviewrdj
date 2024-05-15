@@ -37,6 +37,10 @@
         height: 70px;
     }
 
+    .hamburger {
+        font-size: 45px;
+    }
+
     .menu-bar {
         display: block;
     }
