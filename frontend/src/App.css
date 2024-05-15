@@ -7,11 +7,9 @@
   --font6: 16px;
   --font7: 14px;
 
-  --primarycolor: #172543;
-  --secondarycolor: #3183EF;
+  --primarycolor: #5FC6C4;
+  --secondarycolor: #008196;
   --whitecolor: #ffffff;
-  --blackcolor: #000;
-  --bgcolor: #F5F5F5;
 }
 
 @font-face {
@@ -82,8 +80,9 @@ p {
 .secondarycolor {
   color: var(--secondarycolor);
 }
-.blackcolor{
-  color: var(--blackcolor);
+
+.whitecolor {
+  color: var(--whitecolor);
 }
 
 li {
@@ -93,4 +92,17 @@ li {
 
 a {
   text-decoration: none !important;
+}
+
+/* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/images/bg.png); */
+
+.WithHP {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./assets/images/bg.png);
+  height: 100%;
+  max-height: 100%;
+
+}
+
+.WithoutHP {
+  background-color: var(--whitecolor);
 }

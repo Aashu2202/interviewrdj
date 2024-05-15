@@ -7,11 +7,11 @@ const Faq = () => {
     return (
         <>
             <div className="col-12 faq">
-                <div className="container pt-5">
+                <div className="container">
                     <div className="row justify-content-center align-items-center">
                         <div className="col-lg-10 col-md-10  col-12 bgcolor p-4 m-2 ">
                             <div className="col-12 ">
-                                <div className="text-center primarycolor mb-4">
+                                <div className="text-center whitecolor mb-4">
                                     <h2>Frequently Asked questions</h2>
                                 </div>
                                 <div className="row justify-content-center align-items-center">
@@ -110,4 +110,4 @@ const Faq = () => {
     );
 };
 
-export default Faq;
+export default Faq;

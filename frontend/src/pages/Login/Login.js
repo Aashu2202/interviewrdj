@@ -66,7 +66,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="w-full flex justify-center my-4 login-page">
+    <div className="w-full flex justify-center py-5 login-page">
       <div className="w-full max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
           Login to your account
@@ -93,7 +93,7 @@ const Login = (props) => {
                 value={useremail}
                 onChange={handleEmailChange}
                 className={`bg-gray-50 border ${emailValid ? "border-gray-300" : "border-red-500"
-                  } text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500`}
+                  } text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white `}
                 required
               />
             </div>
@@ -101,29 +101,32 @@ const Login = (props) => {
               <p className="text-red-500 text-sm mt-1">Invalid email format</p>
             )}
           </div>
-          <div className="mb-2 block">
-            <label htmlFor="password" className="text-sm font-medium required">
-              Password
-            </label>
+          <div>
+            <div className="mb-2 block">
+              <label htmlFor="password" className="text-sm font-medium required">
+                Password
+              </label>
+            </div>
+            <div
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Please enter your password here"
+            >
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                required
+              />
+            </div>
           </div>
-          <div
-            data-bs-toggle="tooltip"
-            data-bs-placement="bottom"
-            title="Please enter your password here"
-          >
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-              required
-            />
-          </div>
+
           <button
             type="submit"
-            className="focus:outline-none text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-800"
+            className="submitbtn focus:outline-none text-white  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 "
           >
             Submit
           </button>
@@ -131,7 +134,7 @@ const Login = (props) => {
             Not yet registered?{" "}
             <Link
               to={"/register"}
-              className="font-semibold leading-6 text-purple-600 hover:text-purple-500"
+              className="font-semibold leading-6 secondarycolor"
             >
               Register Here
             </Link>

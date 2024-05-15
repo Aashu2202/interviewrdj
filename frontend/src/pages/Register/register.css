@@ -17,12 +17,18 @@
 }
 
 .react-tel-input .form-control :focus {
-    outline:none !important;
-    box-shadow:none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
+
 .form-control:focus {
     background-color: transparent;
-    border-color:transparent;
+    border-color: transparent;
     outline: 0;
     box-shadow: none;
+}
+
+.createaccbtn {
+    background-color: var(--secondarycolor);
+    color: var(--whitecolor);
 }

@@ -1,5 +1,4 @@
-/* .login-page{
-    background-color: var(--bgcolor);
-    height: 100vh;
-    max-height: max-content;
-} */
+.submitbtn {
+    background-color: var(--secondarycolor);
+    color: var(--whitecolor);
+}

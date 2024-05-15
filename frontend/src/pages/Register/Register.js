@@ -14,7 +14,7 @@ const Register = (props) => {
     const [phone, setPhone] = useState("");
     const { isLoggedIn, setIsLoggedIn, setName } = props;
     let navigate = useNavigate();
-    const[email ,setEmail]= useState("");
+    const [email, setEmail] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false); // State to manage button enable/disable
@@ -62,7 +62,7 @@ const Register = (props) => {
     };
 
     return (
-        <div className="w-full flex flex-col items-center justify-center px-6 py-8 mx-auto my-5 lg:py-0">
+        <div className="w-full flex flex-col items-center justify-center py-4 lg:py-0">
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
@@ -80,14 +80,14 @@ const Register = (props) => {
                                 </label>
                             </div>
                             <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please enter your name here">
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                placeholder="Your Name"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                required
-                            />
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Your Name"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                    required
+                                />
                             </div>
                         </div>
 
@@ -98,16 +98,16 @@ const Register = (props) => {
                                 </label>
                             </div>
                             <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please enter your email here">
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                placeholder="Your Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                                    placeholder="Your Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
                             </div>
                         </div>
 
@@ -122,14 +122,14 @@ const Register = (props) => {
                                     </label>
                                 </div>
                                 <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please enter your password here">
-                                <input
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Your Password"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                    required
-                                />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Your Password"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div>
@@ -142,14 +142,14 @@ const Register = (props) => {
                                     </label>
                                 </div>
                                 <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please Re-enter your password here">
-                                <input
-                                    type="password"
-                                    name="confirmpassword"
-                                    id="confirmpassword"
-                                    placeholder="Re-enter Password"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                    required
-                                />
+                                    <input
+                                        type="password"
+                                        name="confirmpassword"
+                                        id="confirmpassword"
+                                        placeholder="Re-enter Password"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                        required
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -162,13 +162,13 @@ const Register = (props) => {
                                 </label>
                             </div>
                             <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please enter your phone number here">
-                            <PhoneInput
-                                className="number bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                country={"in"}
-                                value={phone}
-                                id="phone"
-                                onChange={(value) => setPhone(value)}
-                            />
+                                <PhoneInput
+                                    className="number bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                                    country={"in"}
+                                    value={phone}
+                                    id="phone"
+                                    onChange={(value) => setPhone(value)}
+                                />
                             </div>
                         </div>
 
@@ -177,7 +177,7 @@ const Register = (props) => {
                                 <input
                                     id="terms"
                                     type="checkbox"
-                                    className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    className="w-4 h-4 secondarycolor bg-gray-100 border-gray-300 rounded  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     required
                                     aria-describedby="terms"
                                     onChange={handleCheckboxChange}
@@ -191,7 +191,7 @@ const Register = (props) => {
                                 >
                                     I accept the{" "}
                                     <Link
-                                        className="font-medium text-purple-600 hover:underline dark:text-purple-500"
+                                        className="font-medium secondarycolor hover:underline"
                                         to={"/termscondition"}
                                     >
                                         Terms and Conditions
@@ -202,7 +202,7 @@ const Register = (props) => {
 
                         <button
                             type="submit"
-                            className={`w-full focus:outline-none text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-800 ${!isButtonEnabled && 'opacity-50 cursor-not-allowed'} `}
+                            className={`createaccbtn w-full focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5   ${!isButtonEnabled && 'opacity-50 cursor-not-allowed'} `}
                             disabled={!isButtonEnabled}
                         >
                             Create an account
@@ -211,7 +211,7 @@ const Register = (props) => {
                             Already have an account?{" "}
                             <Link
                                 to="/login"
-                                className="font-semibold leading-6 text-purple-600 hover:text-purple-500"
+                                className="font-semibold leading-6 secondarycolor"
                             >
                                 Login Here
                             </Link>
@@ -223,4 +223,4 @@ const Register = (props) => {
     );
 };
 
-export default Register;
+export default Register;
