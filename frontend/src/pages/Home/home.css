@@ -3,6 +3,11 @@
     border: none;
 }
 
+.btn-primary:hover {
+    background-color: var(--primarycolor);
+    border: none;
+}
+
 .loading {
     font-size: 84px;
     font-family: 'Montserrat', sans-serif;

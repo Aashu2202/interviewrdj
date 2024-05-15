@@ -98,9 +98,9 @@ a {
 
 .WithHP {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./assets/images/bg.png);
-  height: auto;
-  max-height: 100%;
-
+  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .WithoutHP {
