@@ -128,16 +128,16 @@ const AppNavBar = (props) => {
                             className="nav-dropdown menu-bar"
                         >
                             <Dropdown.Item>
-                                <Link to="/" className="text-lg mx-2 nav-links">Home</Link>
+                                <Link to="/" className="text-lg nav-links w-100">Home</Link>
                             </Dropdown.Item>
                             <Dropdown.Item>
-                                <Link to="/faq" className="text-lg mx-2 nav-links">Faq</Link>
+                                <Link to="/faq" className="text-lg  nav-links w-100">Faq</Link>
                             </Dropdown.Item>
                             <Dropdown.Item>
-                                <Link to="/contact" className="text-lg mx-2 nav-links">Contact</Link>
+                                <Link to="/contact" className="text-lg nav-links w-100">Contact</Link>
                             </Dropdown.Item>
                             <Dropdown.Item>
-                                <Link to="/login" className="text-lg mx-2 nav-links">Login</Link>
+                                <Link to="/login" className="text-lg nav-links w-100">Login</Link>
                             </Dropdown.Item>
                         </Dropdown>
                         <Navbar className="listing2 bg-transparent">
