@@ -27,92 +27,76 @@ const App = () => {
     <div>
       <BrowserRouter>
         <ToastContainer />
-        {!isLoggedIn ? (
+        <div className="WithHP">
+          <AppNavBar
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+          />
+          <div>
+            <Routes>
+              <Route path="/" exact
+                element={
+                  <Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                }
+              />
 
+              <Route path="/register" exact
+                element={
+                  <Register
+                    // isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                    setName={setName}
+                    setEmail={setEmail}
+                  />
+                }
+              />
+              <Route path="/contact" exact
+                element={
+                  <Contact />
+                }
+              />
+              <Route path="/login" exact
+                element={
+                  <Login
+                    // isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                    setName={setName}
+                    setEmail={setEmail}
+                  />
+                }
+              />
+              <Route path="/faq" exact
+                element={<Faq />}
+              />
+              <Route path="/termscondition" exact
+                element={<Termscondition />}
+              />
 
-          <div className="WithHP">
-            <AppNavBar
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              name={name}
-              setName={setName}
-              email={email}
-              setEmail={setEmail}
-            />
-            <div>
-              <Routes>
-                <Route path="/" exact
-                  element={
-                    <Home />
-                    // isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} 
-                  }
-                />
-
-                <Route path="/register" exact
-                  element={
-                    <Register
-                      isLoggedIn={isLoggedIn}
-                      setIsLoggedIn={setIsLoggedIn}
-                      setName={setName}
-                      setEmail={setEmail}
-                    />
-                  }
-                />
-                <Route path="/contact" exact
-                  element={
-                    <Contact />
-                  }
-                />
-                <Route path="/login" exact
-                  element={
-                    <Login
-                      isLoggedIn={isLoggedIn}
-                      setIsLoggedIn={setIsLoggedIn}
-                      setName={setName}
-                      setEmail={setEmail}
-                    />
-                  }
-                />
-                <Route path="/faq" exact
-                  element={<Faq />}
-                />
-              </Routes>
-            </div>
-          </div>
-        ) : (
-          <div className="WithoutHP">
-            <AppNavBar
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              name={name}
-              setName={setName}
-              email={email}
-              setEmail={setEmail}
-            />
-            <div>
-              <Routes>
-
-                <Route path="/termscondition" exact
-                  element={<Termscondition />}
-                />
-                {/* <Route path="/InterviewRoom"
+              <Route path="/termscondition" exact
+                element={<Termscondition />}
+              />
+              <Route path="/InterviewRoom"
                 element={<InterviewRoom />}
               />
               <Route path="/aiassist"
                 element={<AIAssist />}
-              /> */}
-                <Route path="/profile" exact
-                  element={<Profile />}
-                />
-                <Route path="/success" exact
-                  element={<Success />}
-                />
+              />
+              <Route path="/profile" exact
+                element={<Profile />}
+              />
+              <Route path="/success" exact
+                element={<Success />}
+              />
 
-              </Routes>
-            </div>
+            </Routes>
           </div>
+        </div>
 
-        )}
+
       </BrowserRouter>
     </div>
   );

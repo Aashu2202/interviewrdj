@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-69l#75g4iw!@si+##tq+#qg#4_j@5+diw7)x%*!1b-%44d0w$s'
 DEBUG = True
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -39,12 +42,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-# CORS_ALLOWED_ORIGINS=[
-#     'http://localhost:3000',
-# ]
-CORS_ALLOWED_ORIGINS = [
-    'https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app',
+CORS_ALLOWED_ORIGINS=[
+    'http://localhost:3000',
 ]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app',
+# ]
 
 CORS_ALLOW_CREDENTIALS = True
 
