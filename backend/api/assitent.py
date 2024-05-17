@@ -4,8 +4,9 @@ import speech_recognition as sr
 import openai
 import pyttsx3
 
-apikey = ""
+apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
+
 
 engine = pyttsx3.init(driverName="sapi5")
 # Set properties (optional)
