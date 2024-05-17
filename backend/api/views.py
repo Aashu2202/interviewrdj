@@ -17,7 +17,7 @@ from .assitent import call
 import openai
 
 SALT = "8b4f6b2cc1868d75ef79e5cfb8779c11b6a374bf0fce05b485581bf4e1e25b96c8c2855015de8449"
-URL = "http://localhost:3000"
+URL = "https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app"
 
 def mail_template(content, button_url, button_text):
     return f"""<!DOCTYPE html>
