@@ -5,6 +5,7 @@ import axios from "axios";
 import "./aiassist.css";
 import InterviewRoom from "./InterviewRoom";
 import AIimg from "../../assets/images/GIFvoiceassistant.gif";
+const URL = process.env.REACT_APP_BACKEND_URL + "/api/start-interview/";
 
 const AIAssist = () => {
   const [recordingInProgress, setRecordingInProgress] = useState(false); // Track whether recording is in progress
@@ -27,7 +28,7 @@ const AIAssist = () => {
         };
 
         const res = await axios.post(
-          "http://localhost:8000/api/start-interview/",
+          URL,
           formData
         );
         const data = res.data;

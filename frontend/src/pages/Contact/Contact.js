@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image_Gif from "../../assets/images/cont-anm.gif";
 import axios from 'axios';
-
+const URL = process.env.REACT_APP_BACKEND_URL + "/api/contact_us/";
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -21,12 +21,12 @@ const Contact = () => {
         e.preventDefault();
         try {
             // Send form data to the backend API
-            const response = await axios.post('http://localhost:8000/api/contact_us/', formData);
+            const response = await axios.post(URL, formData);
             console.log(response.data); // Log the response from the backend
-            // if(data.success===true)
-            // {
-            //     toast.success(data.message);
-            // }
+            if(data.success===true)
+            {
+                alert("form submitted successfully")
+            }
             
            
             setFormData({
@@ -51,15 +51,15 @@ const Contact = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="name" className="form-label">Name</label>
-                            <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} required />
+                            <input type="text" className="form-control contact-input" id="name" name="name" value={formData.name} onChange={handleChange} required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email address</label>
-                            <input type="email" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                            <input type="email" className="form-control contact-input" id="email" name="email" value={formData.email} onChange={handleChange} required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="message" className="form-label">Message</label>
-                            <textarea className="form-control" id="message" name="message" value={formData.message} onChange={handleChange} rows="4" required></textarea>
+                            <textarea className="form-control contact-input" id="message" name="message" value={formData.message} onChange={handleChange} rows="4" required></textarea>
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>

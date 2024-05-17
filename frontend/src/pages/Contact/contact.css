@@ -1,0 +1,8 @@
+.contact-input{
+    background-color: var(--whitecolor);
+    color: var(--secondarycolor);
+}
+.contact-input:focus{
+    background-color: var(--whitecolor);
+    border: 1px solid var(--secondarycolor);
+}

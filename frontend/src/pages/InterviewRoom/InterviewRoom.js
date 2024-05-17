@@ -7,7 +7,7 @@ import axios from "axios";
 import * as blazeface from "@tensorflow-models/blazeface"; // Face detection model
 import * as cocoSsd from "@tensorflow-models/coco-ssd"; // Object detection model
 import * as tf from "@tensorflow/tfjs"; // Import TensorFlow.js
-
+const URL = process.env.REACT_APP_BACKEND_URL + "/api/video";
 const InterviewRoom = ({ recordingInProgress }) => {
   let navigate = useNavigate();
   const webcamRef = useRef(null);
@@ -133,7 +133,7 @@ const InterviewRoom = ({ recordingInProgress }) => {
 
         try {
           const response = await axios.post(
-            "http://localhost:8000/api/video",
+            URL,
             formData,
             {
               headers: {
