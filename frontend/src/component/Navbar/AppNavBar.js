@@ -106,17 +106,17 @@ const AppNavBar = (props) => {
                 </Navbar.Brand>
                 {isLoggedIn ? (
                     <div className="flex md:order-2 user-menu">
-                        <Dropdown arrowIcon={false} inline label={<Avatar alt="User settings" img={UserIcon} rounded className="avatar" />}>
+                        <Dropdown arrowIcon={false} className="profile-menu" inline label={<Avatar alt="User settings" img={UserIcon} rounded className="avatar" />}>
                             <Dropdown.Header>
                                 <span className="block font-medium text-center dropdown-name">{username}</span>
                                 <span className="block truncate text-sm font-medium">{storedUseremail}</span>
                             </Dropdown.Header>
                             <hr className="py-0 my-0" />
-                            <Dropdown.Item>Settings</Dropdown.Item>
+                            {/* <Dropdown.Item>Settings</Dropdown.Item> */}
                             <Dropdown.Item>
-                                <Link to="/profile" className="text-decoration-none blackcolor">Profile</Link>
+                                <Link to="/profile" className="text-decoration-none w-100 text-start">Profile</Link>
                             </Dropdown.Item>
-                            <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
+                            <Dropdown.Item onClick={handleLogout} className="w-100">Log out</Dropdown.Item>
                         </Dropdown>
                     </div>
                 ) : (

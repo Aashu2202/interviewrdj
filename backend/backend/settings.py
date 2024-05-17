@@ -41,13 +41,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'backend.middleware.AbortDetectionMiddleware',
 ]
-# CORS_ALLOWED_ORIGINS=[
-#     'http://localhost:3000',
+CORS_ALLOWED_ORIGINS=[
+    'http://localhost:3000',
+]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://interviewrdj.vercel.app/',
 # ]
-CORS_ALLOWED_ORIGINS = [
-    'https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app',
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -115,7 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

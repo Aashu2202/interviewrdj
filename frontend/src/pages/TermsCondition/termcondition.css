@@ -1,18 +1,28 @@
-.terms{
+.terms {
     background-color: #fff;
     border-radius: 15px;
 }
-.background-terms{
-    background-color: var(--bgcolor);
+
+/* .background-terms{
     height:max-content;
     max-height: max-content;
-}
-.card-title{
+} */
+.card-title {
     text-align: center;
-    
+
 }
-.card-body{
+
+.card-body {
     border: 1px solid #ccc;
     border-radius: 15px;
-    padding:15px
+    padding: 15px
+}
+
+.termssubmitbtn {
+    background-color: var(--secondarycolor);
+    color: var(--whitecolor);
+}
+
+.checkboxclass {
+    color: var(--secondarycolor);
 }

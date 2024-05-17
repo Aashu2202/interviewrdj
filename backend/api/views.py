@@ -17,8 +17,8 @@ from .assitent import call
 import openai
 
 SALT = "8b4f6b2cc1868d75ef79e5cfb8779c11b6a374bf0fce05b485581bf4e1e25b96c8c2855015de8449"
-URL = "https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app"
-
+URL = "https://interviewrdj.vercel.app"
+# URL = 'http://localhost:3000'
 def mail_template(content, button_url, button_text):
     return f"""<!DOCTYPE html>
             <html>
@@ -72,15 +72,63 @@ class UploadVideoView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response({'error': 'No video file provided'}, status=status.HTTP_400_BAD_REQUEST)
 
+# class StartInterviewView(APIView):
+#     @csrf_exempt
+#     def post(self, request, format=None):
+#         value = request.data["value"]
+#         if value == True:
+#             call()
+#             return Response({"call": True}, status=200)
+#         else:
+#             return Response({"error": "Invalid request"}, status=400)
+
+
+
+import os
+import signal
+import subprocess
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.views import APIView
+from rest_framework.response import Response
+assistant_pid = None
+
 class StartInterviewView(APIView):
     @csrf_exempt
     def post(self, request, format=None):
-        value = request.data["value"]
-        if value == True:
-            call()
-            return Response({"call": True}, status=200)
+        global assistant_pid
+        assistant_process = subprocess.Popen(['python', 'api/assitent.py'])
+        assistant_pid = assistant_process.pid
+        
+        return Response({"message": "Assistant started"}, status=200)
+
+import os
+import signal
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+assistant_pid = None
+
+class StopAssistantView(APIView):
+    def post(self, request, format=None):
+        global assistant_pid
+        
+        if assistant_pid is not None:
+            try:
+                # Terminate the assistant process using its PID
+                os.kill(assistant_pid, signal.SIGTERM)
+                assistant_pid = None
+                return Response({"message": "Assistant stopped"}, status=200)
+            except OSError as e:
+                if e.winerror == 87:  # Check if the error is due to an incorrect parameter
+                    return Response({"message": "Error stopping assistant: Incorrect parameter"}, status=400)
+                else:
+                    raise  # Re-raise the exception if it's not related to an incorrect parameter
         else:
-            return Response({"error": "Invalid request"}, status=400)
+            return Response({"message": "No assistant process running"}, status=400)
+
+
+
+
 
 class ContactCreateView(APIView):
     def post(self, request, format=None):
@@ -130,5 +178,5 @@ class VerifyEmail(View):
             if user_email:
                 user_email.verified = True
                 user_email.save()
-                return redirect('verified_email_page')  # Redirect to a page indicating successful verification
-        return redirect('unverified_email_page')  # Redirect to a page indicating failed verification
+                return redirect('verified_email_page') 
+        return redirect('unverified_email_page')  

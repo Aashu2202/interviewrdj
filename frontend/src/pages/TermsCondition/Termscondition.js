@@ -16,14 +16,14 @@ const Termscondition = () => {
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-8 col-12">
-              <div className="terms p-5 my-4">
+              <div className="terms px-lg-5 py-lg-5 px-2 py-4 my-4">
                 <h5 className="card-title mb-2">Terms & Condition</h5>
                 <div className="card-body">
                   <li>
                     By accessing or using our platform, you agree to be bound by
                     these Terms. If you do not agree to these Terms,
                   </li>
-                  <ul>
+                  <ul className="p-lg-2 p-0">
                     <li>Information We Collect</li>
                     <li>
                       <strong>Accurate Information: </strong> You agree to provide
@@ -59,11 +59,11 @@ const Termscondition = () => {
                 </div>
                 <h5 className="card-title text-center mt-4 mb-2">Privacy Policy</h5>
                 <div className="card-body">
-                  <p>
+                  <li>
                     This Privacy Policy outlines how we collect, use, and protect
                     your personal information when you use our platform.
-                  </p>
-                  <ul>
+                  </li>
+                  <ul className="p-lg-2 p-0">
                     <li>Information We Collect</li>
                     <li>
                       <strong>Account Information: </strong> When you sign up for
@@ -113,27 +113,28 @@ const Termscondition = () => {
 
                   </ul>
                 </div>
-                <div className="mt-3">
+                <div className="mt-3 d-flex">
                   <input
                     type="checkbox"
                     id="remember"
-                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="checkboxclass w-4 h-4 mt-lg-1 mt-md-1 mt-3 bg-gray-100 border-gray-300 rounded  dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600"
                     onChange={handleCheckboxChange}
                   />
                   <label htmlFor="remember" className=" remenber-link ms-3" >
                     I have read and agree to the Terms and Conditions
                   </label>
-                  <div className="btn-class mt-3">
-                    <Link to={"/aiassist"}>
-                      <button
-                        type="submit"
-                        class={`focus:outline-none text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-800 ${!isButtonEnabled && 'opacity-50 cursor-not-allowed'}`}
-                        disabled={!isButtonEnabled}
-                      >
-                        Next
-                      </button>
-                    </Link>
-                  </div>
+
+                </div>
+                <div className="btn-class mt-3">
+                  <Link to={"/aiassist"}>
+                    <button
+                      type="submit"
+                      className={`termssubmitbtn focus:outline-none text-white  focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5  ${!isButtonEnabled && 'opacity-50 cursor-not-allowed'}`}
+                      disabled={!isButtonEnabled}
+                    >
+                      Next
+                    </button>
+                  </Link>
                 </div>
               </div>
 
@@ -145,4 +146,4 @@ const Termscondition = () => {
   );
 };
 
-export default Termscondition;
+export default Termscondition;
