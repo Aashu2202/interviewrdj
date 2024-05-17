@@ -36,5 +36,4 @@ tzdata==2024.1
 tzlocal==5.2
 urllib3==2.2.1
 yarl==1.9.4
-
-pywin32>=223
+pywin32
