@@ -15,7 +15,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-69l#75g4iw!@si+##tq+#qg#4_j@5+diw7)x%*!1b-%44d0w$s'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,7 +47,7 @@ MIDDLEWARE = [
 #     'http://localhost:3000',
 # ]
 CORS_ALLOWED_ORIGINS = [
-    'interviewrdj-git-main-aashish-yadavs-projects.vercel.app',
+    'https://interviewrdj.vercel.app',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
