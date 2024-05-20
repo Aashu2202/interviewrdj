@@ -1,15 +1,15 @@
 import gtts
 import os
-import playsound
 import random
 import speech_recognition as sr
 import openai
+import sounddevice as sd
+import soundfile as sf
 
 apikey = os.getenv("OPENAI_API_KEY")
 # apikey = ""
 
 openai.api_key = apikey
-
 
 chatStr = ""
 
@@ -27,11 +27,11 @@ def chat(query):
         response_text = response['choices'][0]['message']['content'].strip()
         say(response_text)
         chatStr += response_text
-        return response_text
         if not os.path.exists("Openai"):
             os.mkdir("Openai")
         with open(f"Openai/prompt-{random.randint(1, 4565)}.txt", "w") as f:
             f.write(chatStr)
+        return response_text
     except openai.error.OpenAIError as e:
         print("OpenAI Error:", e)
         return "Some Error..."
@@ -42,11 +42,14 @@ def chat(query):
 def say(text):
     print(text)
     sound = gtts.gTTS(text, lang="en")
-    if os.path.exists("audio.mp3"):
-         os.remove("audio.mp3")
     sound.save("audio.mp3")
-    playsound.playsound("audio.mp3")
-
+    # Convert the mp3 file to wav format using pydub
+    audio = AudioSegment.from_mp3("audio.mp3")
+    audio.export("audio.wav", format="wav")
+    # Use sounddevice and soundfile to play the audio
+    data, fs = sf.read("audio.wav", dtype='float32')
+    sd.play(data, fs)
+    sd.wait()  # Wait until the audio is done playing
 
 def takeCommand():
     r = sr.Recognizer()
@@ -59,11 +62,10 @@ def takeCommand():
         except Exception as e:
             return "Some Error Occurred, sorry..."
 
-
-            
 if __name__ == "__main__":
     say("hello, I am Era, I am your interviewer...")
     say("please... tell me about yourself.")
+
 #     print("Listening....")
 #     query = takeCommand()
 #     say("Nice to hear about you")
