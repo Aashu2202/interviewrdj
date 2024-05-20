@@ -1,16 +1,15 @@
+import gtts
 import os
+import playsound
 import random
 import speech_recognition as sr
 import openai
-import pyttsx3
+
 apikey = os.getenv("OPENAI_API_KEY")
+# apikey = ""
+
 openai.api_key = apikey
 
-
-engine = pyttsx3.init(driverName="sapi5")
-
-engine.setProperty('rate', 150)  # Speed of speech (words per minute)
-engine.setProperty('volume', 0.9)  # Volume level (0.0 to 1.0)
 
 chatStr = ""
 
@@ -26,9 +25,7 @@ def chat(query):
             stop=None
         )
         response_text = response['choices'][0]['message']['content'].strip()
-        engine.say(response_text)
-        engine.runAndWait()
-        print(response_text)
+        say(response_text)
         chatStr += response_text
         return response_text
         if not os.path.exists("Openai"):
@@ -43,12 +40,13 @@ def chat(query):
         return "Some Error..."
 
 def say(text):
-    try:
-        print(text)
-        engine.say(text)
-        engine.runAndWait()
-    except Exception as e:
-        print("Error occurred while speaking:", e)
+    print(text)
+    sound = gtts.gTTS(text, lang="en")
+    if os.path.exists("audio.mp3"):
+         os.remove("audio.mp3")
+    sound.save("audio.mp3")
+    playsound.playsound("audio.mp3")
+
 
 def takeCommand():
     r = sr.Recognizer()
@@ -60,13 +58,17 @@ def takeCommand():
             return query
         except Exception as e:
             return "Some Error Occurred, sorry..."
-if __name__ == '__main__':
-    print('pycharm')
-    say("hello, I am Jarvin, I am your interviewer...")
+
+
+            
+if __name__ == "__main__":
+    say("hello, I am Era, I am your interviewer...")
     say("please... tell me about yourself.")
+    print("Listening....")
     query = takeCommand()
     say("Nice to hear about you")
     say("In which technology do you want to give your interview?")
+
     i = 1
     while i < 4:
         print("Listening....")
@@ -75,4 +77,112 @@ if __name__ == '__main__':
         i += 1
     print("Listening....")
     query = takeCommand()
+
+  #-----------------------------------------------------
+
+    say("ok.. give me defination of Object oriented porgraming...")
+    i = 1
+    while i < 4:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("So, What is Data base...")
+    i = 1
+    while i < 4:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("So, What is SQL.")
+    i = 1
+    while i < 4:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("Please tell me about Project you made during your college time")
+    i = 1
+    while i < 6:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("ok, Have you create any other projects.. please tell me yes or no")
+    query = takeCommand()
+    if "yes".lower() in query.lower():
+        say("Please tell me about Other Projects")
+        i = 1
+        while i < 5:
+            print("Listeing....")
+            query = takeCommand()
+            chat(query)
+            i += 1
+        print("Listeing....")
+        query = takeCommand()
+    else:
+        say("No.. problem")
+
+    say("Please tell me about your hobbies")
+    i = 1
+    while i < 3:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("What are your greatest strengths")
+    i = 1
+    while i < 3:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("What are your greatest Weaknesses")
+    i = 1
+    while i < 3:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("Please tell me about some achievement in your life")
+    i = 1
+    while i < 3:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
+    say("why do you want to work for our company")
+    i = 1
+    while i < 3:
+        print("Listeing....")
+        query = takeCommand()
+        chat(query)
+        i += 1
+    print("Listeing....")
+    query = takeCommand()
+
     say("ok.. thank you...")
