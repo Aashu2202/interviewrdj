@@ -3,8 +3,8 @@ import os
 import random
 import speech_recognition as sr
 import openai
-import sounddevice as sd
-import soundfile as sf
+from pydub import AudioSegment
+import pygame
 
 apikey = os.getenv("OPENAI_API_KEY")
 # apikey = ""
@@ -46,10 +46,12 @@ def say(text):
     # Convert the mp3 file to wav format using pydub
     audio = AudioSegment.from_mp3("audio.mp3")
     audio.export("audio.wav", format="wav")
-    # Use sounddevice and soundfile to play the audio
-    data, fs = sf.read("audio.wav", dtype='float32')
-    sd.play(data, fs)
-    sd.wait()  # Wait until the audio is done playing
+    # Initialize pygame mixer
+    pygame.mixer.init()
+    pygame.mixer.music.load("audio.wav")
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
 
 def takeCommand():
     r = sr.Recognizer()
