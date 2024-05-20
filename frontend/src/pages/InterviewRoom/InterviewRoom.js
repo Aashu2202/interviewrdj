@@ -60,7 +60,9 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
         const objectModel = await cocoSsd.load();
 
         const checkForFacesAndObjects = async () => {
-            if (isMounted && webcamRef.current && webcamRef.current.readyState === 4) {
+            if (!isMounted) return; // Check if component is mounted
+        
+            if (webcamRef.current && webcamRef.current.readyState === 4) {
                 try {
                     const videoElement = webcamRef.current;
                     const tensor = tf.browser.fromPixels(videoElement);
@@ -95,13 +97,14 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
                     console.error("Error detecting faces and objects:", error);
                 }
             } else {
-                console.warn("Webcam is not ready or component is unmounted.");
+                console.warn("Webcam is not ready.");
             }
         
             if (isMounted) {
                 requestAnimationFrame(checkForFacesAndObjects);
             }
         };
+        
         
 
         checkForFacesAndObjects();
