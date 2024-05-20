@@ -60,17 +60,17 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
         const objectModel = await cocoSsd.load();
 
         const checkForFacesAndObjects = async () => {
-            if (webcamRef.current && webcamRef.current.readyState === 4) {
+            if (isMounted && webcamRef.current && webcamRef.current.readyState === 4) {
                 try {
                     const videoElement = webcamRef.current;
                     const tensor = tf.browser.fromPixels(videoElement);
-
+        
                     const facePredictions = await faceModel.estimateFaces(tensor);
                     const objectPredictions = await objectModel.detect(tensor);
-
+        
                     let gadgetsFound = false;
                     let multipleFacesFound = false;
-
+        
                     if (facePredictions.length > 1) {
                         multipleFacesFound = true;
                     }
@@ -80,11 +80,11 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
                             gadgetsFound = true;
                         }
                     });
-
+        
                     setNoFaceWarning(facePredictions.length === 0);
                     setGadgetWarning(gadgetsFound);
                     setMultipleFacesWarning(multipleFacesFound);
-
+        
                     if (multipleFacesFound && gadgetsFound) {
                         console.log("Multiple faces and electronic gadgets detected!");
                         toast.warn("Multiple faces and electronic gadgets detected!", {
@@ -95,13 +95,14 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
                     console.error("Error detecting faces and objects:", error);
                 }
             } else {
-                console.warn("Webcam is not ready.");
+                console.warn("Webcam is not ready or component is unmounted.");
             }
-
+        
             if (isMounted) {
                 requestAnimationFrame(checkForFacesAndObjects);
             }
         };
+        
 
         checkForFacesAndObjects();
     };
