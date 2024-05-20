@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
-
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-69l#75g4iw!@si+##tq+#qg#4_j@5+diw7)x%*!1b-%44d0w$s'
 DEBUG = False
 
@@ -47,7 +48,7 @@ MIDDLEWARE = [
 #     'http://localhost:3000',
 # ]
 CORS_ALLOWED_ORIGINS = [
-    'https://interviewrdj.vercel.app',
+    'https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -116,7 +117,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Add this line to include your project's 'static' directory
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

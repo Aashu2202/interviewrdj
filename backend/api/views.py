@@ -13,11 +13,11 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
-from .assitent import call
+# from .assitent import call
 import openai
 
 SALT = "8b4f6b2cc1868d75ef79e5cfb8779c11b6a374bf0fce05b485581bf4e1e25b96c8c2855015de8449"
-URL = "interviewrdj-1zzohv2rx-aashish-yadavs-projects.vercel.app"
+URL = "https://interviewrdj-git-main-aashish-yadavs-projects.vercel.app"
 # URL = 'http://localhost:3000'
 def mail_template(content, button_url, button_text):
     return f"""<!DOCTYPE html>
@@ -66,7 +66,7 @@ class UploadVideoView(APIView):
     def post(self, request, *args, **kwargs):
         video_file = request.FILES.get('video')
         email = request.POST.get('email')
-        if video_file:
+        if video_file: 
             video = Video.objects.create(video_file=video_file, email=email)
             serializer = VideoSerializer(video)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

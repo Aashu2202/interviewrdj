@@ -3,13 +3,12 @@ import random
 import speech_recognition as sr
 import openai
 import pyttsx3
-
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
 
 
 engine = pyttsx3.init(driverName="sapi5")
-# Set properties (optional)
+
 engine.setProperty('rate', 150)  # Speed of speech (words per minute)
 engine.setProperty('volume', 0.9)  # Volume level (0.0 to 1.0)
 
@@ -61,7 +60,7 @@ def takeCommand():
             return query
         except Exception as e:
             return "Some Error Occurred, sorry..."
-def call():
+if __name__ == '__main__':
     print('pycharm')
     say("hello, I am Jarvin, I am your interviewer...")
     say("please... tell me about yourself.")
