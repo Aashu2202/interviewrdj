@@ -101,10 +101,11 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
             } else {
                 console.warn("Webcam is not ready.");
             }
-        
             if (isMounted) {
+                console.log("keyframe");
                 requestAnimationFrame(checkForFacesAndObjects);
             }
+
         };
         
         
