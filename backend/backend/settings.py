@@ -48,7 +48,7 @@ MIDDLEWARE = [
 #     'http://localhost:3000',
 # ]
 CORS_ALLOWED_ORIGINS = [
-    'interviewrdj.vercel.app',
+    'https://interviewrdj.vercel.app',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
