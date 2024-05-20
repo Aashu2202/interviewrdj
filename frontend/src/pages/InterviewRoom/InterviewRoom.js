@@ -60,7 +60,9 @@ const InterviewRoom = ({ recordingInProgress, stopRecordingRef }) => {
         const objectModel = await cocoSsd.load();
 
         const checkForFacesAndObjects = async () => {
-            if (!isMounted) return; // Check if component is mounted
+            if (!isMounted) {
+                console.log("is mount fun");
+                return }; // Check if component is mounted
         
             if (webcamRef.current && webcamRef.current.readyState === 4) {
                 try {

@@ -64,125 +64,125 @@ def takeCommand():
 if __name__ == "__main__":
     say("hello, I am Era, I am your interviewer...")
     say("please... tell me about yourself.")
-    print("Listening....")
-    query = takeCommand()
-    say("Nice to hear about you")
-    say("In which technology do you want to give your interview?")
+#     print("Listening....")
+#     query = takeCommand()
+#     say("Nice to hear about you")
+#     say("In which technology do you want to give your interview?")
 
-    i = 1
-    while i < 4:
-        print("Listening....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listening....")
-    query = takeCommand()
+#     i = 1
+#     while i < 4:
+#         print("Listening....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listening....")
+#     query = takeCommand()
 
-  #-----------------------------------------------------
+#   #-----------------------------------------------------
 
-    say("ok.. give me defination of Object oriented porgraming...")
-    i = 1
-    while i < 4:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("ok.. give me defination of Object oriented porgraming...")
+#     i = 1
+#     while i < 4:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("So, What is Data base...")
-    i = 1
-    while i < 4:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("So, What is Data base...")
+#     i = 1
+#     while i < 4:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("So, What is SQL.")
-    i = 1
-    while i < 4:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("So, What is SQL.")
+#     i = 1
+#     while i < 4:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("Please tell me about Project you made during your college time")
-    i = 1
-    while i < 6:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("Please tell me about Project you made during your college time")
+#     i = 1
+#     while i < 6:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("ok, Have you create any other projects.. please tell me yes or no")
-    query = takeCommand()
-    if "yes".lower() in query.lower():
-        say("Please tell me about Other Projects")
-        i = 1
-        while i < 5:
-            print("Listeing....")
-            query = takeCommand()
-            chat(query)
-            i += 1
-        print("Listeing....")
-        query = takeCommand()
-    else:
-        say("No.. problem")
+#     say("ok, Have you create any other projects.. please tell me yes or no")
+#     query = takeCommand()
+#     if "yes".lower() in query.lower():
+#         say("Please tell me about Other Projects")
+#         i = 1
+#         while i < 5:
+#             print("Listeing....")
+#             query = takeCommand()
+#             chat(query)
+#             i += 1
+#         print("Listeing....")
+#         query = takeCommand()
+#     else:
+#         say("No.. problem")
 
-    say("Please tell me about your hobbies")
-    i = 1
-    while i < 3:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("Please tell me about your hobbies")
+#     i = 1
+#     while i < 3:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("What are your greatest strengths")
-    i = 1
-    while i < 3:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("What are your greatest strengths")
+#     i = 1
+#     while i < 3:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("What are your greatest Weaknesses")
-    i = 1
-    while i < 3:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("What are your greatest Weaknesses")
+#     i = 1
+#     while i < 3:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("Please tell me about some achievement in your life")
-    i = 1
-    while i < 3:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("Please tell me about some achievement in your life")
+#     i = 1
+#     while i < 3:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("why do you want to work for our company")
-    i = 1
-    while i < 3:
-        print("Listeing....")
-        query = takeCommand()
-        chat(query)
-        i += 1
-    print("Listeing....")
-    query = takeCommand()
+#     say("why do you want to work for our company")
+#     i = 1
+#     while i < 3:
+#         print("Listeing....")
+#         query = takeCommand()
+#         chat(query)
+#         i += 1
+#     print("Listeing....")
+#     query = takeCommand()
 
-    say("ok.. thank you...")
+#     say("ok.. thank you...")
