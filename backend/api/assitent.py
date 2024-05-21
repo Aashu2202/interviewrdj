@@ -3,7 +3,7 @@ import random
 import speech_recognition as sr
 import openai
 from gtts import gTTS
-import pygame
+import ffmpeg
 
 # Set up OpenAI API key
 apikey = os.getenv("OPENAI_API_KEY")
@@ -42,16 +42,11 @@ def chat(query):
 def say(text):
     print(text)
     sound = gTTS(text, lang="en")
-    sound.save("audio.mp3")
+    audio_file = "audio.mp3"
+    sound.save(audio_file)
 
-    # Initialize pygame mixer
-    pygame.mixer.init()
-    pygame.mixer.music.load("audio.mp3")
-    pygame.mixer.music.play()
-
-    # Wait for the audio to finish playing
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
+    # Play the audio using ffmpeg
+    ffmpeg.input(audio_file).output("pipe:", format="wav").run(quiet=True, overwrite_output=True)
 
 def takeCommand():
     r = sr.Recognizer()
