@@ -3,7 +3,7 @@ import os
 import random
 import speech_recognition as sr
 import openai
-from playsound import playsound
+import pygame
 
 apikey = os.getenv("OPENAI_API_KEY")
 if not apikey:
@@ -45,7 +45,12 @@ def say(text):
     filename = "audio.mp3"
     sound.save(filename)
     try:
-        playsound(filename)
+        # Initialize pygame mixer
+        pygame.mixer.init()
+        pygame.mixer.music.load(filename)
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
     except Exception as e:
         print(f"Error playing sound: {e}")
     finally:
