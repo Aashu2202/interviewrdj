@@ -1,14 +1,13 @@
-import gtts
 import os
 import random
 import speech_recognition as sr
 import openai
-from pydub import AudioSegment
-from pydub.playback import play
+from gtts import gTTS
+import pygame
 
+# Set up OpenAI API key
 apikey = os.getenv("OPENAI_API_KEY")
-if not apikey:
-    raise ValueError("OpenAI API key not found. Please set the OPENAI_API_KEY environment variable.")
+# apikey = ""
 
 openai.api_key = apikey
 
@@ -42,17 +41,17 @@ def chat(query):
 
 def say(text):
     print(text)
-    sound = gtts.gTTS(text, lang="en")
-    filename = "audio.mp3"
-    sound.save(filename)
-    try:
-        audio = AudioSegment.from_file(filename)
-        play(audio)
-    except Exception as e:
-        print(f"Error playing sound: {e}")
-    finally:
-        if os.path.exists(filename):
-            os.remove(filename)
+    sound = gTTS(text, lang="en")
+    sound.save("audio.mp3")
+
+    # Initialize pygame mixer
+    pygame.mixer.init()
+    pygame.mixer.music.load("audio.mp3")
+    pygame.mixer.music.play()
+
+    # Wait for the audio to finish playing
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
 
 def takeCommand():
     r = sr.Recognizer()
@@ -63,13 +62,12 @@ def takeCommand():
             print(f"User said: {query}")
             return query
         except Exception as e:
-            print(f"Error recognizing speech: {e}")
             return "Some Error Occurred, sorry..."
 
 if __name__ == "__main__":
     say("hello, I am Era, I am your interviewer...")
     say("please... tell me about yourself.")
-
+    
 
 #     print("Listening....")
 #     query = takeCommand()
