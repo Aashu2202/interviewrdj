@@ -3,7 +3,8 @@ import os
 import random
 import speech_recognition as sr
 import openai
-import pygame
+from pydub import AudioSegment
+from pydub.playback import play
 
 apikey = os.getenv("OPENAI_API_KEY")
 if not apikey:
@@ -45,12 +46,8 @@ def say(text):
     filename = "audio.mp3"
     sound.save(filename)
     try:
-        # Initialize pygame mixer
-        pygame.mixer.init()
-        pygame.mixer.music.load(filename)
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            pygame.time.Clock().tick(10)
+        audio = AudioSegment.from_file(filename)
+        play(audio)
     except Exception as e:
         print(f"Error playing sound: {e}")
     finally:
