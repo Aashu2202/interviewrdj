@@ -60,7 +60,7 @@ def takeCommand():
 
 
             
-if _name_ == "_main_":
+if __name__ == "__main__":
     say("hello, I am Jarvin, I am your interviewer...")
     say("please... tell me about yourself.")
     print("Listening....")
