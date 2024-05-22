@@ -26,6 +26,7 @@ packaging==24.0
 pipwin==0.5.2
 psycopg2==2.9.9
 psycopg2-binary==2.9.9
+PyAudio==0.2.14
 pycparser==2.22
 pydub==0.25.1
 pygame==2.5.2
@@ -48,4 +49,3 @@ tzdata==2024.1
 tzlocal==5.2
 urllib3==2.2.1
 yarl==1.9.4
-pycairo==1.20.1
