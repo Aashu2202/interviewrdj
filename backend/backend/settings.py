@@ -18,7 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-69l#75g4iw!@si+##tq+#qg#4_j@5+diw7)x%*!1b-%44d0w$s'
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '795a-49-43-2-29.ngrok-free.app']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '795a-49-43-2-29.ngrok-free.app']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,7 +59,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "ay024898@gmail.com"
-EMAIL_HOST_PASSWORD = "jfsk pmvc mnnl iqve"
+EMAIL_HOST_PASSWORD = "rnkr hsnd xukk bjcv"
 ADMIN_EMAIL = "ay024898@gmail.com"
 
 TIME_ZONE = 'Asia/Kolkata'

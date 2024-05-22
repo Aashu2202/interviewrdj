@@ -24,7 +24,6 @@ multidict==6.0.5
 openai==0.28.0
 packaging==24.0
 pipwin==0.5.2
-playsound==1.2.2
 psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pycparser==2.22

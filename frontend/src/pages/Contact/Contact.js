@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image_Gif from "../../assets/images/cont-anm.gif";
 import axios from 'axios';
+import './contact.css'
 const URL = process.env.REACT_APP_BACKEND_URL + "/api/contact_us/";
 const Contact = () => {
     const [formData, setFormData] = useState({
