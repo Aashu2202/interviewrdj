@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-69l#75g4iw!@si+##tq+#qg#4_j@5+diw7)x%*!1b-%44d0w$s'
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'b628-49-43-2-29.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '795a-49-43-2-29.ngrok-free.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
