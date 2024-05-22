@@ -1,9 +1,0 @@
-# backend/render.yaml
-services:
-  - type: web
-    name: myservice
-    env: python
-    buildCommand: |
-      bash install_dependencies.sh
-      pip install -r requirements.txt
-    startCommand: python /opt/render/project/src/backend/api/assistent.py
