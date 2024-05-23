@@ -5,7 +5,6 @@ import speech_recognition as sr
 import openai
 from gtts import gTTS
 import playsound
-import pyttsx3
 from io import BytesIO
 import winsound
 
