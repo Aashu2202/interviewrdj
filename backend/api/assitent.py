@@ -1,11 +1,12 @@
 import os
 import random
-import pyttsx3
 import time
-import pyaudio
 import speech_recognition as sr
 import openai
-from scipy.io.wavfile import write
+from gtts import gTTS
+import pygame
+from pygame import mixer
+from io import BytesIO
 
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
@@ -40,54 +41,31 @@ def chat(query):
 
 def say(text):
     print(text)
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text)
+    fp = BytesIO()
+    tts.write_to_fp(fp)
+    fp.seek(0)
+    mixer.init()
+    mixer.music.load(fp)
+    mixer.music.play()
+    while mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
 
 def takeCommand():
-    fs = 44100  # Sample rate
-    seconds = 5  # Duration of recording
-    print("Listening....")
-    CHUNK = 1024
-    FORMAT = pyaudio.paInt16
-    CHANNELS = 1
-    RATE = 44100
-
-    audio = pyaudio.PyAudio()
-
-    stream = audio.open(format=FORMAT, channels=CHANNELS,
-                        rate=RATE, input=True,
-                        frames_per_buffer=CHUNK)
-
-    frames = []
-
-    for i in range(0, int(RATE / CHUNK * seconds)):
-        data = stream.read(CHUNK)
-        frames.append(data)
-
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
-
-    wf = wave.open("output.wav", 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(audio.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
-
     r = sr.Recognizer()
-    with sr.AudioFile('output.wav') as source:
-        audio = r.record(source)  # Read the entire audio file
-        try:
-            query = r.recognize_google(audio, language="en-in")
-            print(f"User said: {query}")
-            return query
-        except Exception as e:
-            print(e)
-            return "Some Error Occurred, sorry..."
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+    try:
+        query = r.recognize_google(audio)
+        print(f"User said: {query}")
+        return query
+    except Exception as e:
+        print(e)
+        return "Some Error Occurred, sorry..."
 
 if __name__ == "__main__":
+    pygame.init()
     say("hello, I am Jarvin, I am your interviewer...")
     say("please... tell me about yourself.")
     query = takeCommand()
