@@ -4,7 +4,7 @@ import gtts
 import time
 import speech_recognition as sr
 import openai
-from playsound import playsound
+import pyglet
 from scipy.io.wavfile import write
 
 # Set OpenAI API key
@@ -46,7 +46,10 @@ def say(text):
         if os.path.exists("audio.mp3"):
             os.remove("audio.mp3")
         sound.save("audio.mp3")
-        playsound("audio.mp3")
+        player = pyglet.media.Player()
+        player.queue(pyglet.media.load("audio.mp3"))
+        player.play()
+        time.sleep(player.duration)
     except gtts.tts.gTTSError as e:
         print(f"Error: {e}")
 
