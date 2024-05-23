@@ -7,6 +7,7 @@ from gtts import gTTS
 import playsound
 import pyttsx3
 from io import BytesIO
+import winsound
 
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
@@ -41,11 +42,9 @@ def chat(query):
 
 def say(text):
     print(text)
-    tts = gTTS(text)
-    fp = BytesIO()
-    tts.write_to_fp(fp)
-    fp.seek(0)
-    playsound.playsound(fp)
+    sound = gtts.gTTS(text, lang="en")
+    sound.save("audio.mp3")
+    os.system("start audio.mp3")
 
 def takeCommand():
     r = sr.Recognizer()
