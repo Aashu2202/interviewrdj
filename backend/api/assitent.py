@@ -2,7 +2,7 @@ import os
 import random
 import pyttsx3
 import time
-import sounddevice as sd
+import pyaudio
 import speech_recognition as sr
 import openai
 from scipy.io.wavfile import write
@@ -48,9 +48,34 @@ def takeCommand():
     fs = 44100  # Sample rate
     seconds = 5  # Duration of recording
     print("Listening....")
-    recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype='int16')
-    sd.wait()  # Wait until recording is finished
-    write('output.wav', fs, recording)  # Save as WAV file
+    CHUNK = 1024
+    FORMAT = pyaudio.paInt16
+    CHANNELS = 1
+    RATE = 44100
+
+    audio = pyaudio.PyAudio()
+
+    stream = audio.open(format=FORMAT, channels=CHANNELS,
+                        rate=RATE, input=True,
+                        frames_per_buffer=CHUNK)
+
+    frames = []
+
+    for i in range(0, int(RATE / CHUNK * seconds)):
+        data = stream.read(CHUNK)
+        frames.append(data)
+
+    stream.stop_stream()
+    stream.close()
+    audio.terminate()
+
+    wf = wave.open("output.wav", 'wb')
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(audio.get_sample_size(FORMAT))
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames))
+    wf.close()
+
     r = sr.Recognizer()
     with sr.AudioFile('output.wav') as source:
         audio = r.record(source)  # Read the entire audio file
