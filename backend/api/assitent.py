@@ -1,13 +1,13 @@
 import os
 import random
 import gtts
-import pygame
 import time
-import sounddevice as sd
 import speech_recognition as sr
 import openai
+from playsound import playsound
 from scipy.io.wavfile import write
 
+# Set OpenAI API key
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
 
@@ -41,40 +41,20 @@ def chat(query):
 
 def say(text):
     print(text)
-    max_retries = 3
-    for attempt in range(max_retries):
-        try:
-            sound = gtts.gTTS(text, lang="en")
-            if os.path.exists("audio.mp3"):
-                os.remove("audio.mp3")
-            sound.save("audio.mp3")
-            break
-        except gtts.tts.gTTSError as e:
-            print(f"Attempt {attempt + 1} failed: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(2)  # wait before retrying
-            else:
-                raise
-
-    pygame.mixer.init()
-    pygame.mixer.music.load("audio.mp3")
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
-    pygame.mixer.quit()
-    os.remove("audio.mp3")
-
+    try:
+        sound = gtts.gTTS(text, lang="en")
+        if os.path.exists("audio.mp3"):
+            os.remove("audio.mp3")
+        sound.save("audio.mp3")
+        playsound("audio.mp3")
+    except gtts.tts.gTTSError as e:
+        print(f"Error: {e}")
 
 def takeCommand():
-    fs = 44100  # Sample rate
-    seconds = 5  # Duration of recording
-    print("Listening....")
-    recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype='int16')
-    sd.wait()  # Wait until recording is finished
-    write('output.wav', fs, recording)  # Save as WAV file
     r = sr.Recognizer()
-    with sr.AudioFile('output.wav') as source:
-        audio = r.record(source)  # Read the entire audio file
+    with sr.Microphone() as source:
+        print("Listening....")
+        audio = r.listen(source)
         try:
             query = r.recognize_google(audio, language="en-in")
             print(f"User said: {query}")
