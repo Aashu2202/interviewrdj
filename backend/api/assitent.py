@@ -1,13 +1,12 @@
 import os
 import random
-import gtts
+import pyttsx3
 import time
+import sounddevice as sd
 import speech_recognition as sr
 import openai
-import pyglet
 from scipy.io.wavfile import write
 
-# Set OpenAI API key
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
 
@@ -41,23 +40,20 @@ def chat(query):
 
 def say(text):
     print(text)
-    try:
-        sound = gtts.gTTS(text, lang="en")
-        if os.path.exists("audio.mp3"):
-            os.remove("audio.mp3")
-        sound.save("audio.mp3")
-        player = pyglet.media.Player()
-        player.queue(pyglet.media.load("audio.mp3"))
-        player.play()
-        time.sleep(player.duration)
-    except gtts.tts.gTTSError as e:
-        print(f"Error: {e}")
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 
 def takeCommand():
+    fs = 44100  # Sample rate
+    seconds = 5  # Duration of recording
+    print("Listening....")
+    recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype='int16')
+    sd.wait()  # Wait until recording is finished
+    write('output.wav', fs, recording)  # Save as WAV file
     r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening....")
-        audio = r.listen(source)
+    with sr.AudioFile('output.wav') as source:
+        audio = r.record(source)  # Read the entire audio file
         try:
             query = r.recognize_google(audio, language="en-in")
             print(f"User said: {query}")
