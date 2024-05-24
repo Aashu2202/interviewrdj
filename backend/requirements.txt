@@ -30,7 +30,7 @@ psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pycparser==2.22
 pydub==0.25.1
-pygame==2.5.2
+
 pyglet==2.0.15
 pyjsparser==2.7.1
 PyPrind==2.11.3

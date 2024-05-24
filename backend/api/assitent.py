@@ -1,6 +1,6 @@
-import gtts
-import pygame
 import os
+import gtts
+import playsound
 import random
 import speech_recognition as sr
 import openai
@@ -42,20 +42,9 @@ def say(text):
     print(text)
     sound = gtts.gTTS(text, lang="en")
     if os.path.exists("audio.mp3"):
-        os.remove("audio.mp3")
+         os.remove("audio.mp3")
     sound.save("audio.mp3")
-    # Set the SDL_AUDIODRIVER environment variable to dummy
-    os.environ["SDL_AUDIODRIVER"] = "dummy"
-    pygame.init()
-    pygame.mixer.init()
-    pygame.mixer.music.load("audio.mp3")
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
-    pygame.mixer.quit()  # Release resources
-    pygame.quit()  # Clean up
-    os.remove("audio.mp3")  # Remove the audio file after playback
-
+    playsound.playsound("audio.mp3")
 
 
 def takeCommand():
@@ -87,7 +76,7 @@ if __name__ == "__main__":
         i += 1
     print("Listening....")
     query = takeCommand()
-    say("thank you")
+
 #-----------------------------------------------------
 
     say("ok.. give me defination of Object oriented porgraming...")
