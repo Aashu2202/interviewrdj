@@ -4,9 +4,8 @@ import time
 import speech_recognition as sr
 import openai
 from gtts import gTTS
-import playsound
+import pygame
 from io import BytesIO
-import winsound
 
 apikey = os.getenv("OPENAI_API_KEY")
 openai.api_key = apikey
@@ -41,9 +40,15 @@ def chat(query):
 
 def say(text):
     print(text)
-    sound = gtts.gTTS(text, lang="en")
-    sound.save("audio.mp3")
-    os.system("start audio.mp3")
+    tts = gTTS(text)
+    fp = BytesIO()
+    tts.write_to_fp(fp)
+    fp.seek(0)
+    pygame.mixer.init()
+    pygame.mixer.music.load(fp)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
 
 def takeCommand():
     r = sr.Recognizer()
@@ -59,7 +64,7 @@ def takeCommand():
         return "Some Error Occurred, sorry..."
 
 if __name__ == "__main__":
-    engine = pyttsx3.init()
+    pygame.init()
     say("hello, I am Jarvin, I am your interviewer...")
     say("please... tell me about yourself.")
     query = takeCommand()
